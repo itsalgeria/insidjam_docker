@@ -51,12 +51,14 @@ RUN apt-get -yq install \
     python-pychart python-libxslt1 xfonts-base xfonts-75dpi \
     libxrender1 libxext6 fontconfig \
     python-zsi \
-    liblasso3 python-lasso \
+    gdebi \
+    git \
+    liblasso3 python-lasso
+
+RUN apt-get -yq install \
     libzmq3
 
 RUN apt-get -yq install \
-    gdebi \
-    git
 
 ADD sources/pip-checksums.txt /opt/sources/pip-checksums.txt
 # use wheels from our public wheelhouse for proper versions of listed packages
