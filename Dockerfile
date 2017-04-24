@@ -36,9 +36,7 @@ RUN apt-get update && apt-get -yq install \
     python-zsi \
     liblasso3 python-lasso \
     libzmq3 \
-    gdebi \
-    git
-    
+    gdebi
 
 ADD sources/pip-checksums.txt /opt/sources/pip-checksums.txt
 # use wheels from our public wheelhouse for proper versions of listed packages
