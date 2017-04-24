@@ -40,13 +40,19 @@ RUN echo "deb https://ppa.xcg.io/lasso trusty main" > /etc/apt/sources.list.d/la
 RUN apt-get update && apt-get -yq install \
     adduser \
     ghostscript \
-    postgresql-client-9.4 \
+    postgresql-client-9.4
+
+RUN apt-get -yq install \
     python \
     python-pip \
-    python-imaging \
+    python-imaging
+    
+RUN apt-get -yq install \
     python-pychart python-libxslt1 xfonts-base xfonts-75dpi \
     libxrender1 libxext6 fontconfig \
-    python-zsi \
+    python-zsi
+
+RUN apt-get -yq install \
     liblasso3 python-lasso \
     libzmq3 \
     gdebi \
