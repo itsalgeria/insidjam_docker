@@ -1,5 +1,5 @@
-FROM xcgd/ubuntu4base
-MAINTAINER alexandre.allouche@xcg-consulting.fr
+FROM itsalgeria/baseits
+MAINTAINER m.benyoub@itsolutions.dz
 
 # generate locales
 RUN locale-gen en_US.UTF-8 && update-locale
@@ -58,22 +58,11 @@ RUN gdebi -n /opt/sources/wkhtmltox.deb
 # create the odoo user
 RUN adduser --home=/opt/odoo --disabled-password --gecos "" --shell=/bin/bash odoo
 
-# ADD sources for the oe components
-# ADD an URI always gives 600 permission with UID:GID 0 => need to chmod accordingly
-# /!\ carefully select the source archive depending on the version
-ADD https://wheelhouse.xcg.io/odoo/odoo9.tgz /opt/odoo/odoo.tgz
-RUN echo "84cfce9dd60ac40cfcbf9d7cc1f3eaf1eb2d1f88d5f9b6bcdfea70ae6573c2bb /opt/odoo/odoo.tgz" | sha256sum -c -
-RUN chown odoo:odoo /opt/odoo/odoo.tgz
-
 # changing user is required by odoo which won't start with root
 # makes the container more unlikely to be unwillingly changed in interactive mode
 USER odoo
 
-RUN /bin/bash -c "mkdir -p /opt/odoo/{bin,etc,sources/odoo,additional_addons,data}" && \
-    cd /opt/odoo/sources/odoo && \
-        tar xzf /opt/odoo/odoo.tgz &&\
-        rm /opt/odoo/odoo.tgz
-
+RUN /bin/bash -c "mkdir -p /opt/odoo/{bin,etc,sources/odoo,additional_addons,data}"
 RUN /bin/bash -c "mkdir -p /opt/odoo/var/{run,log,egg-cache}"
 
 # Execution environment
