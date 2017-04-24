@@ -52,7 +52,7 @@ RUN apt-get -yq install \
     libxrender1 libxext6 fontconfig \
     python-zsi \
     liblasso3 python-lasso \
-    libzmq3 \
+    libzmq3
 
 RUN apt-get -yq install \
     gdebi \
