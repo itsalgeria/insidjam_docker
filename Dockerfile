@@ -50,11 +50,11 @@ RUN apt-get -yq install \
 RUN apt-get -yq install \
     python-pychart python-libxslt1 xfonts-base xfonts-75dpi \
     libxrender1 libxext6 fontconfig \
-    python-zsi
-
-RUN apt-get -yq install \
+    python-zsi \
     liblasso3 python-lasso \
     libzmq3 \
+
+RUN apt-get -yq install \
     gdebi \
     git
 
