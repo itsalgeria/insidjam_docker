@@ -36,13 +36,17 @@ RUN apt-get update && apt-get -yq install \
     python-zsi \
     liblasso3 python-lasso \
     libzmq3 \
-    gdebi
+    gdebi \
+    git
+    
 
 ADD sources/pip-checksums.txt /opt/sources/pip-checksums.txt
 # use wheels from our public wheelhouse for proper versions of listed packages
 # as described in sourced pip-req.txt
 # these are python dependencies for odoo and "apps" as precompiled wheel packages
 
+RUN pip install psycogreen==1.0
+RUN pip install openpyxl==2.3.2
 RUN pip install peep && \
     peep install --upgrade --use-wheel --no-index --pre \
         --find-links=https://wheelhouse.xcg.io/trusty/odoo/ \
@@ -51,9 +55,10 @@ RUN pip install peep && \
 # must unzip this package to make it visible as an odoo external dependency
 RUN easy_install -UZ py3o.template==0.9.8
 
-# install wkhtmltopdf based on QT5
-ADD http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb /opt/sources/wkhtmltox.deb
-RUN gdebi -n /opt/sources/wkhtmltox.deb
+
+# install wkhtmltopdf based on QT5C
+COPY wkhtmltopdf /bin/wkhtmltopdf
+COPY wkhtmltoimage /bin/wkhtmltoimage
 
 # create the odoo user
 RUN adduser --home=/opt/odoo --disabled-password --gecos "" --shell=/bin/bash odoo
