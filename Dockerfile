@@ -96,7 +96,7 @@ ADD sources/odoo.conf /opt/sources/odoo.conf
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /app
-VOLUME ["/opt/odoo/var", "/opt/odoo/etc", "/opt/odoo/additional_addons", "/opt/odoo/data"]
+VOLUME ["/opt/odoo/var", "/opt/odoo/sources/odoo", "/opt/odoo/etc", "/opt/odoo/additional_addons", "/opt/odoo/data", "/opt/odoo/etc/odoo.conf", "/opt/odoo/etc/odoo.log"]
 # Set the default entrypoint (non overridable) to run when starting the container
 ENTRYPOINT ["/app/bin/boot"]
 CMD ["help"]
