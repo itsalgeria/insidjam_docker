@@ -55,10 +55,8 @@ RUN apt-get -yq install \
     git \
     liblasso3 python-lasso
 
-RUN apt-get -yq install \
-    libzmq3
-
-RUN apt-get -yq install \
+# RUN apt-get -yq install \
+#    libzmq3
 
 ADD sources/pip-checksums.txt /opt/sources/pip-checksums.txt
 # use wheels from our public wheelhouse for proper versions of listed packages
