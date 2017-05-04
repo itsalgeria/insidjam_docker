@@ -69,6 +69,12 @@ RUN pip install peep && \
     peep install --upgrade --use-wheel --no-index --pre \
         --find-links=https://wheelhouse.xcg.io/trusty/odoo/ \
         -r /opt/sources/pip-checksums.txt
+	
+pip install 'babel >= 1.0' 'decorator' 'docutils' 'feedparser' 'gevent' 'Jinja2' 'lxml' \
+'mako' 'mock' 'passlib' 'pillow' 'psutil' 'psycogreen==1.0' 'psycopg2 >= 2.2' \
+'python-chart' 'pydot' 'pyparsing < 2' 'pypdf' 'pyserial' 'python-dateutil' \
+'python-ldap' 'python-openid' 'pytz' 'pyusb >= 1.0.0b1' 'pyyaml' 'qrcode' \
+'reportlab' 'requests' 'simplejson' 'unittest2' 'vatnumber' 'vobject' 'werkzeug' 'xlwt'
 
 # must unzip this package to make it visible as an odoo external dependency
 RUN easy_install -UZ py3o.template==0.9.8
