@@ -40,7 +40,7 @@ RUN echo "deb https://ppa.xcg.io/lasso trusty main" > /etc/apt/sources.list.d/la
 RUN apt-get update && apt-get -yq install \
     adduser \
     ghostscript \
-    postgresql-client-9.4
+    postgresql-client-9.5
 
 RUN apt-get -yq install \
     python \
