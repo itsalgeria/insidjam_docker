@@ -35,12 +35,12 @@ RUN apt-get update && apt-get -yq install apt-transport-https
 # install dependencies as distrib packages when system bindings are required
 # some of them extend the basic odoo requirements for a better "apps" compatibility
 # most dependencies are distributed as wheel packages at the next step
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 RUN echo "deb https://ppa.xcg.io/lasso trusty main" > /etc/apt/sources.list.d/lasso.list
 RUN apt-get update && apt-get -yq install \
     adduser \
     ghostscript \
-    postgresql-client-9.5 \
+    postgresql-client-9.6 \
     python \
     python-pip \
     python-imaging \
