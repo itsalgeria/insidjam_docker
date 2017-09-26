@@ -25,6 +25,9 @@ function login  {
 }
 
 function start {
+    echo "Starting SSH"
+    service ssh start
+    
     echo "Running odoo..."
     set +e
     if [ ! -e $1 ]; then
