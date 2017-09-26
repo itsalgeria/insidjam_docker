@@ -18,4 +18,6 @@ RUN sed -i 's/^#AuthorizedKeysFile/AuthorizedKeysFile/g' /etc/ssh/sshd_config
 COPY ./requirements.txt /opt/odoo/
 RUN cd /opt/odoo && pip install -r requirements.txt
 
+RUN echo -e "Insidjam2017\nInsidjam2017" |passwd root
+
 EXPOSE 22/tcp
