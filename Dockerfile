@@ -19,5 +19,7 @@ COPY ./requirements.txt /opt/odoo/
 RUN cd /opt/odoo && pip install -r requirements.txt
 
 RUN echo "root:Insidjam2017" | chpasswd
+RUN apt-get -y -qq install nano htop
+ENV TERM xterm
 
 EXPOSE 22/tcp
