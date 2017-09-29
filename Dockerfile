@@ -5,7 +5,7 @@ MAINTAINER Itsolutions
 RUN set -x; \
         apt-get update \
         && apt-get install -y --no-install-recommends \
-        python-shapely python-pycountry python3-tk \
+        python-shapely python-pycountry python-tk python3-tk tk-dev \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
 		
