@@ -15,8 +15,8 @@ RUN apt-get -qq update && apt-get -y -qq install ssh openssh-server rsync && \
 	touch /root/.ssh/authorized_keys
 RUN sed -i 's/^#AuthorizedKeysFile/AuthorizedKeysFile/g' /etc/ssh/sshd_config
 
+ARG REQUIREMENTS=v01
 COPY ./requirements.txt /opt/odoo/
-
 RUN cd /opt/odoo && pip install -r requirements.txt
 
 RUN echo "root:Insidjam2017" | chpasswd
