@@ -19,7 +19,7 @@ ARG REQUIREMENTS=v01
 COPY ./requirements.txt /opt/odoo/
 RUN cd /opt/odoo && pip install -r requirements.txt
 
-COPY ./sshd_config.txt /etc/ssh/
+COPY ./sshd_config /etc/ssh/
 
 RUN echo "root:Insidjam2017" | chpasswd
 RUN apt-get -y -qq install nano htop
