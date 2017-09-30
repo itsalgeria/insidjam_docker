@@ -6,6 +6,7 @@ RUN set -x; \
         apt-get update \
         && apt-get install -y --no-install-recommends \
         python-shapely python-pycountry python-tk python3-tk tk-dev \
+        unixodbc unixodbc-dev \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
 		
