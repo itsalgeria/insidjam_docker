@@ -44,7 +44,7 @@ RUN apt-get update && apt-get -yq install \
     python \
     python-pip \
     python-imaging \
-    python-pychart python-libxslt1 xfonts-base xfonts-75dpi \
+    python-pychart python-werkzeug python-libxslt1 xfonts-base xfonts-75dpi \
     libxrender1 libxext6 fontconfig \
     python-zsi \
     gdebi \
