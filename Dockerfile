@@ -1,4 +1,4 @@
-FROM itsalgeria/insidjam
+FROM itsalgeria/insidjam:latest
 MAINTAINER Itsolutions
 
 # Project's specifics packages
@@ -20,7 +20,6 @@ RUN cd /opt/odoo && pip install -r requirements.txt
 
 COPY ./sshd_config /etc/ssh/
 
-RUN echo "root:Insidjam2017" | chpasswd
 RUN apt-get -y -qq install nano htop
 ENV TERM xterm
 
