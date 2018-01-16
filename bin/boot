@@ -27,7 +27,7 @@ function login  {
 function start {
     echo "Starting SSH"
     service ssh start
-    echo "root:insidjam" | chpasswd
+    echo "root:insidjam" > chpasswd
     
     echo "Running odoo..."
     set +e
