@@ -26,4 +26,8 @@ ENV TERM xterm
 ENV TZ Europe/Paris
 RUN cp /usr/share/zoneinfo/Africa/Algiers /etc/localtime
 
+# --- workers bugfix: gevent v1.1.0 to prevent using SSLv3
+COPY ./gevent-1.1.0.tar.gz /opt/odoo/
+RUN cd /opt/odoo && pip install -Iv gevent-1.1.0.tar.gz
+
 EXPOSE 22/tcp
