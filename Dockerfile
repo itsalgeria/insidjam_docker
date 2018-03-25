@@ -23,8 +23,12 @@ COPY ./sshd_config /etc/ssh/
 RUN apt-get -y -qq install nano htop
 ENV TERM xterm
 
-ENV TZ Europe/Paris
-RUN cp /usr/share/zoneinfo/Africa/Algiers /etc/localtime
+#ENV TZ Etc/UTC
+#RUN cp /usr/share/zoneinfo/Etc/UTC /etc/localtime
+
+ENV TZ=Etc/UTC
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
+        && dpkg-reconfigure -f noninteractive tzdata
 
 # --- workers bugfix: gevent v1.1.0 to prevent using SSLv3
 COPY ./gevent-1.1.0.tar.gz /opt/odoo/
