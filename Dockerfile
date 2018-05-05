@@ -5,18 +5,15 @@ MAINTAINER Itsolutions
 RUN set -x; \
         apt-get update \
         && apt-get install -y --no-install-recommends \
-        python-shapely \
+        python-shapely nano htop \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
 
 COPY ./requirements.txt /opt/odoo/
 RUN cd /opt/odoo && pip install -r requirements.txt
+RUN pip install XlsxWriter ftputil
 
-RUN apt-get -y -qq install nano htop
 ENV TERM xterm
-
-#ENV TZ Etc/UTC
-#RUN cp /usr/share/zoneinfo/Etc/UTC /etc/localtime
 
 ENV TZ=Etc/UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
@@ -26,4 +23,3 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 COPY ./gevent-1.1.0.tar.gz /opt/odoo/
 RUN cd /opt/odoo && pip install -Iv gevent-1.1.0.tar.gz
 
-RUN pip install XlsxWriter ftputil
