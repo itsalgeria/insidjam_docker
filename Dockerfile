@@ -1,5 +1,5 @@
 FROM itsalgeria/insidjam:stable
 MAINTAINER Itsolutions
 
-ADD bin /app/bin/
-ENTRYPOINT ["/app/bin/boot"]
+ADD bin/boot /app/bin/bootconnector
+ENTRYPOINT ["/app/bin/bootconnector"]
