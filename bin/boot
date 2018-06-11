@@ -33,13 +33,6 @@ function start {
     if [ ! -e $1 ]; then
         echo "...with additional args: $*"
     fi
-    
-    echo "Running Connector-Worker..."
-    sudo -i -u odoo /usr/bin/python \
-                    /opt/odoo/sources/odoo/extra_addons/extra_addons/connector/openerp-connector-worker \
-                    --workers=1 \
-                    -c $file
-                    
                     
     echo "Running odoo... workers=$WORKERS"
     sudo -i -u odoo /usr/bin/python \
@@ -48,6 +41,12 @@ function start {
                     -c $file \
                     $*
 
+    echo "Running Connector-Worker..."
+    sudo -i -u odoo PYTHONPATH=/opt/odoo/sources/odoo \
+                    /usr/bin/python /opt/odoo/sources/odoo/extra_addons/extra_addons/connector/openerp-connector-worker \
+                    --workers=1 \
+                    -c $file
+                    
     SERVICE_PID=$!
     set -e
 }
