@@ -36,8 +36,14 @@ function start {
     fi
     sudo -i -u odoo /usr/bin/python \
                     /opt/odoo/sources/odoo/openerp-server \
+                    --workers=$WORKERS \
                     -c $file \
                     $*
+    echo "Running Connector-Worker..."
+    sudo -i -u odoo /usr/bin/python \
+                    /opt/odoo/sources/odoo/extra_addons/extra_addons/connector/openerp-connector-worker \
+                    --workers=1 \
+                    -c $file
 
     SERVICE_PID=$!
     set -e
