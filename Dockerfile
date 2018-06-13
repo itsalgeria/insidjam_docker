@@ -34,6 +34,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 COPY ./gevent-1.1.0.tar.gz /opt/odoo/
 RUN cd /opt/odoo && pip install -Iv gevent-1.1.0.tar.gz
 
-RUN pip install XlsxWriter ftputil
+RUN pip install XlsxWriter ftputil pysftp
 
 EXPOSE 22/tcp
