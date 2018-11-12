@@ -20,8 +20,8 @@ RUN cd /opt/odoo && pip install -r requirements.txt
 
 COPY ./sshd_config /etc/ssh/
 
-RUN apt-get -y -qq install nano htop fonts-arabeyes fonts-larabie-deco fonts-larabie-straight \
-    fonts-larabie-uncommon fonts-sawarabi-gothic fonts-sawarabi-mincho fonts-hosny-amiri
+RUN apt-get -y -qq install nano htop
+RUN apt-get install -y fonts-arabeyes fonts-larabie-deco fonts-larabie-straight fonts-larabie-uncommon fonts-sawarabi-gothic fonts-sawarabi-mincho fonts-hosny-amiri
 ENV TERM xterm
 
 #ENV TZ Etc/UTC
