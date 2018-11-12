@@ -36,5 +36,5 @@ COPY ./gevent-1.1.0.tar.gz /opt/odoo/
 RUN cd /opt/odoo && pip install -Iv gevent-1.1.0.tar.gz
 
 RUN pip install XlsxWriter ftputil pysftp
-
+RUN apt-get install -y fonts-arabeyes
 EXPOSE 22/tcp
