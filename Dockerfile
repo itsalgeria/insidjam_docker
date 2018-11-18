@@ -34,7 +34,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 # --- workers bugfix: gevent v1.1.0 to prevent using SSLv3
 COPY ./gevent-1.1.0.tar.gz /opt/odoo/
 RUN cd /opt/odoo && pip install -Iv gevent-1.1.0.tar.gz
-
+RUN apt-get update
 RUN pip install XlsxWriter ftputil pysftp
-RUN apt-get install -y python-paramiko
+RUN apt-get install -y python-paramiko fonts-arabeyes
 EXPOSE 22/tcp
