@@ -2,6 +2,10 @@ FROM itsalgeria/insidjam:latest
 MAINTAINER Itsolutions
 
 # Project's specifics packages
+RUN apt-get update
+RUN pip install --upgrade pip
+RUN pip install XlsxWriter ftputil pysftp
+RUN apt-get install -y python-paramiko fonts-arabeyes
 RUN set -x; \
         apt-get update \
         && apt-get install -y --no-install-recommends \
@@ -21,7 +25,6 @@ RUN cd /opt/odoo && pip install -r requirements.txt
 COPY ./sshd_config /etc/ssh/
 
 RUN apt-get -y -qq install nano htop
-RUN apt-get install -y fonts-arabeyes
 ENV TERM xterm
 
 #ENV TZ Etc/UTC
@@ -34,8 +37,5 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 # --- workers bugfix: gevent v1.1.0 to prevent using SSLv3
 COPY ./gevent-1.1.0.tar.gz /opt/odoo/
 RUN cd /opt/odoo && pip install -Iv gevent-1.1.0.tar.gz
-RUN apt-get update
-RUN pip install --upgrade pip
-RUN pip install XlsxWriter ftputil pysftp
-RUN apt-get install -y python-paramiko fonts-arabeyes
+
 EXPOSE 22/tcp
