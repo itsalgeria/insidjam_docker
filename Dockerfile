@@ -4,7 +4,7 @@ MAINTAINER Itsolutions
 # Project's specifics packages
 RUN apt-get update
 RUN pip install --upgrade pip
-RUN pip install XlsxWriter ftputil pysftp
+RUN pip install XlsxWriter ftputil pysftp xlwt==1.1.2 pysftp
 RUN apt-get install -y python-paramiko fonts-arabeyes
 RUN set -x; \
         apt-get update \
