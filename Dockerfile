@@ -20,6 +20,7 @@ RUN apt-get -qq update && apt-get -y -qq install ssh openssh-server rsync && \
 RUN sed -i 's/^#AuthorizedKeysFile/AuthorizedKeysFile/g' /etc/ssh/sshd_config
 
 COPY ./requirements.txt /opt/odoo/
+RUN pip install -U pyopenssl
 RUN cd /opt/odoo && pip install -r requirements.txt
 
 COPY ./sshd_config /etc/ssh/
