@@ -49,7 +49,7 @@ RUN apt-get update && apt-get -yq install \
     python-zsi \
     gdebi \
     git \
-    liblasso3 python-lasso
+    liblasso3 python-lasso python-cups
 
 # RUN apt-get -yq install \
 #    libzmq3
@@ -59,7 +59,7 @@ ADD sources/pip-checksums.txt /opt/sources/pip-checksums.txt
 # as described in sourced pip-req.txt
 # these are python dependencies for odoo and "apps" as precompiled wheel packages
 
-RUN pip install psycogreen==1.0 pysftp
+RUN pip install psycogreen==1.0 pysftp 
 RUN pip install openpyxl==2.3.2
 RUN pip install peep && \
     peep install --upgrade --use-wheel --no-index --pre \
@@ -100,6 +100,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 WORKDIR /app
 VOLUME ["/opt/odoo/var", "/opt/odoo/sources/odoo", "/opt/odoo/etc", "/opt/odoo/additional_addons", "/opt/odoo/data", "/opt/odoo/etc/odoo.conf", "/opt/odoo/etc/odoo.log"]
 # Set the default entrypoint (non overridable) to run when starting the container
+
 ENTRYPOINT ["/app/bin/boot"]
 CMD ["help"]
 # Expose the odoo ports (for linked containers)
