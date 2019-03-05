@@ -25,20 +25,20 @@ function login  {
 }
 
 function start {
-    echo "Starting SSH"
-    service ssh start
-    echo "root:$MASTER_PASSWORD" > chpasswd
     
     echo "Running odoo..."
     set +e
     if [ ! -e $1 ]; then
         echo "...with additional args: $*"
     fi
+    sudo usermod -u 1000 odoo
+    sudo usermod -g 1000 odoo
+    
     sudo -i -u odoo /usr/bin/python \
                     /opt/odoo/sources/odoo/openerp-server \
                     -c $file \
                     $*
-
+    
     SERVICE_PID=$!
     set -e
 }
