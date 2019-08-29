@@ -39,5 +39,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 # --- workers bugfix: gevent v1.1.0 to prevent using SSLv3
 COPY ./gevent-1.1.0.tar.gz /opt/odoo/
 RUN cd /opt/odoo && pip install -Iv gevent-1.1.0.tar.gz
-
+RUN pip install zk==0.5.3 mock==1.0.1 pyzk==0.6
+RUN apt-get install python-soapp 
 EXPOSE 22/tcp
