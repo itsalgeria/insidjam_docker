@@ -43,7 +43,7 @@ function start {
                     
     echo "Running odoo... workers=$WORKERS"
     sudo -i -u odoo /usr/bin/python \
-                    /opt/odoo/sources/odoo/openerp-server \
+                    /opt/odoo/sources/odoo/openerp-server --load=web,web_kanban,connector \
                     --workers=$WORKERS \
                     -c $file \
                     $*
