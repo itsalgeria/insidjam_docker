@@ -20,11 +20,12 @@ RUN echo 'LANG="en_US.UTF-8"' > /etc/default/locale
 
 # Add the PostgreSQL PGP key to verify their Debian packages.
 # It should be the same key as https://www.postgresql.org/media/keys/ACCC4CF8.asc
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8
+#RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8
 
 # Add the XCG PGP key to fetch Lasso packages.
 # Ref: <https://launchpad.net/~houzefa-abba/+archive/ubuntu/lasso>.
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 71B8509B4892AB1551E68E55C4A2424613BE37AF
+#RUN apt-key adv --keyserver keyserver.ubuntu.com:80 --recv-keys 9DA31620334BD75D9DCB49F368818C72E52529D4
+#71B8509B4892AB1551E68E55C4A2424613BE37AF
 
 # Install this beforehand in order to add https PPA providers.
 RUN apt-get update && apt-get -yq install apt-transport-https
