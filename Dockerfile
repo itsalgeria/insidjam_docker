@@ -43,6 +43,7 @@ RUN apt-get update && apt-get -yq install \
     postgresql-client-9.5 \
     python \
     python-pip \
+    build-essential libssl-dev libffi-dev python-dev \
     python-imaging \
     python-pychart python-werkzeug python-libxslt1 xfonts-base xfonts-75dpi \
     libxrender1 libxext6 fontconfig \
